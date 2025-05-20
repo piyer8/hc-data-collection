@@ -1,3 +1,4 @@
+
 let currentPreset = [];
 let currentSignalIndex = 0;
 let studyStartTime = null;
@@ -81,13 +82,16 @@ function createRatingSlider(description, type) {
 async function displayCurrentSignal() {
     const signalId = currentPreset[currentSignalIndex];
     currentSignalElement.textContent = signalId;
-    
+    const signalStatus = document.getElementById('signal-status');
     // Fetch and send WAV file
     (async () => {
+        const { load_and_send_pcm } =  await import('./Websocket/load_and_send_pcm.js');
+        console.log("Loading PCM");
         const url = `signals/${signalId}.wav`;
         const response = await fetch(url);
-    
+        signalStatus.innerHTML = "Loading signal ..."
         if (!response.ok) {
+            signalStatus.innerHTML = "Could not load signal"
             console.error(`Failed to fetch ${url}: ${response.statusText}`);
             return;
         }
@@ -96,10 +100,11 @@ async function displayCurrentSignal() {
         const file = new File([blob], `${signalId}.wav`, { type: blob.type });
     
         try {
-            const { load_and_send_pcm } = await import('./Websocket/load_and_send_pcm.js');
             await load_and_send_pcm(file);
+            signalStatus.innerHTML = "Signal loaded"
         } catch (err) {
             console.error(`Failed to load PCM from ${file.name}:`, err);
+            signalStatus.innerHTML = "Could not load signal"
         }
     })();
     

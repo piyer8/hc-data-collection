@@ -1,0 +1,14 @@
+{
+    "sensoryDescriptions": [
+        "The signal is smooth and quiet.",
+        "The signal is rough and noisy."    
+    ],
+    "emotionalDescriptions": [
+        "The signal is calm and peaceful.",
+        "The signal is tense and anxious."
+    ],
+    "associativeDescriptions": [
+        "The signal reminds me of a lathe machine",
+        "The signal reminds me of a suspenseful movie"
+    ]
+}
