@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haptic Signal Study</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="setup-screen" class="screen">
+        <h1>Haptic Signal Study</h1>
+        <div class="setup-container">
+            <label for="preset-select">Select Preset:</label>
+            <select id="preset-select">
+                <option value="">Select a preset...</option>
+            </select>
+            <div id="preset-preview" class="hidden">
+                <h3>Selected Signals:</h3>
+                <p id="preview-text"></p>
+            </div>
+            <button id="start-button" disabled>Start Study</button>
+        </div>
+    </div>
+
+    <div id="study-screen" class="screen hidden">
+        <div class="progress-bar">
+            <div id="progress-fill"></div>
+        </div>
+        <div class="signal-container">
+            <h2>Signal <span id="current-signal">1</span></h2>
+            <div id="descriptions-container">
+                <div class="description-section">
+                    <h3>Sensory Descriptions</h3>
+                    <div id="sensory-descriptions"></div>
+                </div>
+                <div class="description-section">
+                    <h3>Emotional Descriptions</h3>
+                    <div id="emotional-descriptions"></div>
+                </div>
+                <div class="description-section">
+                    <h3>Associative Descriptions</h3>
+                    <div id="associative-descriptions"></div>
+                </div>
+            </div>
+            <button id="next-button">Next Signal</button>
+        </div>
+    </div>
+
+    <div id="completion-screen" class="screen hidden">
+        <h2>Study Complete!</h2>
+        <p>Thank you for participating. Your results have been downloaded.</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
